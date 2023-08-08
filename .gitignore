@@ -1,0 +1,4 @@
+# Directories to ignore
+output_data/
+source_data/
+__pycache__/

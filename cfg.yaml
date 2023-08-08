@@ -1,0 +1,6 @@
+source_data_dir: /home/chrismenelaou/de/source_data
+output_data_dir: /home/chrismenelaou/de/output_data 
+
+l0_path: /home/chrismenelaou/de/output_data/tmp_encs.csv
+l2_path: /home/chrismenelaou/de/output_data/tmp_encs2.csv
+
