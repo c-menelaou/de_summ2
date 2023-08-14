@@ -6,6 +6,11 @@ name = "pypi"
 [packages]
 pytz = "*"
 pyyaml = "*"
+tqdm = "*"
+mysql-connector-python = "*"
+python-dotenv = "*"
+ipykernel = "*"
+pandas = "*"
 
 [dev-packages]
 

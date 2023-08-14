@@ -1,4 +1,8 @@
 # Directories to ignore
-output_data/
-source_data/
-__pycache__/
+output_data
+source_data
+__pycache__
+airflow/__pycache__
+
+.env
+*.docx

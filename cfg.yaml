@@ -1,6 +1,12 @@
 source_data_dir: /home/chrismenelaou/de/source_data
 output_data_dir: /home/chrismenelaou/de/output_data 
 
+tmp_path:
+  Encounter: /home/chrismenelaou/de/output_data/tmp_encounter.csv
+  Patient:   /home/chrismenelaou/de/output_data/tmp_patient.csv
+  Condition: /home/chrismenelaou/de/output_data/tmp_condition.csv
+  MedicationOrder: /home/chrismenelaou/de/output_data/tmp_medication.csv
+
 l0_path: /home/chrismenelaou/de/output_data/tmp_encs.csv
 l2_path: /home/chrismenelaou/de/output_data/tmp_encs2.csv
 
