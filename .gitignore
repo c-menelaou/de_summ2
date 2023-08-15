@@ -3,6 +3,7 @@ output_data
 source_data
 __pycache__
 airflow/__pycache__
+docs
 
 .env
-*.docx
+__pycache__/resources.cpython-39.pyc

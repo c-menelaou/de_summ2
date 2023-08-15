@@ -8,6 +8,12 @@ import typing
 from typing import List
 
 
+def date1_lt_date2(date1, date2):
+    if isinstance(date1, datetime.date):
+        return date1 < date2.date()
+    elif isinstance(date1, datetime.datetime):
+        return date1 < date2
+
 def pull_item_from_extension(url, extensions) -> List:
 
     matches = list(
@@ -288,7 +294,7 @@ class Patient(EHR_item):
     def __init__(self, data, today=None):
         self.id = data['id']
         self.gender = data['gender']
-        self.birthDate = datetime.datetime.fromisoformat(data['birthDate']).astimezone(pytz.timezone('US/Eastern'))
+        self.birthDate = datetime.date.fromisoformat(data['birthDate'])
        
         # self.address = [
         #         Address(
@@ -337,12 +343,11 @@ class Patient(EHR_item):
         )
 
         if today is None:
-            today = datetime.date.today()
-
+            today = datetime.datetime.today().astimezone(pytz.timezone('US/Eastern'))
             
         if 'deceasedDateTime' in data.keys():   
-            self.deceasedDateTime = datetime.datetime.fromisoformat(data['deceasedDateTime'])
-            if self.deceasedDateTime.date() < today:
+            self.deceasedDateTime = datetime.datetime.fromisoformat(data['deceasedDateTime']).astimezone(pytz.timezone('US/Eastern'))
+            if self.deceasedDateTime < today:
                 self.isDeceased = True
             else:
                 self.isDeceased = False

@@ -66,10 +66,16 @@ def extract_to_csv(
 
         for item in items:
             o = Object(item['resource'], today=cutoff_date)
-            if getattr(o, relevant_dates[object_type]) < cutoff_date:
+            if date1_lt_date2(getattr(o, relevant_dates[object_type]), cutoff_date):
                 o.to_csv(csv_str, sep=sep)
             
     return csv_str
+
+def date1_lt_date2(date1, date2):
+    if type(date1) == datetime.date:
+        return date1 < date2.date()
+    elif type(date1) == datetime.datetime:
+        return date1 < date2
 
 
 def append_date(csv_str_in, data_dt, sep, header=False, ti=None):
@@ -108,7 +114,8 @@ def main(dev=False, data_dt=None, object_type=None, header=False):
         dev_mode=dev,
         header=header
         )
-    csv_str_w_date = append_date(csv_str, data_dt, sep='\t', header=header)
+    data_date = datetime.datetime.fromisoformat(data_dt).date()
+    csv_str_w_date = append_date(csv_str, data_date, sep='\t', header=header)
 
     tmp_path = cfg['tmp_path'][object_type]
     with open(tmp_path, 'w') as f:

@@ -24,8 +24,8 @@ if path not in sys.path:
 
 with DAG(
   dag_id="ehr_etl_pipeline",
-  schedule=None,
-  start_date=pendulum.datetime(2021,1,1,tz="UTC"),
+  schedule="0 12 1 * *",
+  start_date=pendulum.datetime(2010,1,1,tz="UTC"),
   catchup=False,
   tags=['data_engineering'],
 ) as dag:
@@ -45,7 +45,7 @@ with DAG(
 
   def extract_function(data_type, ti=None, **kwargs):
     import pipeline
-    csv_str_w_date = pipeline.main(dev=dev_mode, data_dt=kwargs['ds'], object_type=data_type)
+    csv_str_w_date = pipeline.main(dev=dev_mode, data_dt=kwargs['ts'], object_type=data_type)
 
   def load_function(data_type, table_name, ti=None, **kwargs):
     mysql_hook = MySqlHook('mysql_ehr', schema='ehr_db', local_infile=True)
