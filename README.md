@@ -16,10 +16,10 @@ Configure a connector in Airflow with the name "mysql_ehr" to point to the MySQL
 ----
 
 pipeline.py  
-- contains the object classes and ETL pipeline functions  
+ - contains the object classes and ETL pipeline functions  
 cfg.yaml  
-- contains locations of source and temporary output files  
+ - contains locations of source and temporary output files  
 sql/ddl.sql  
-- SQL DDL statements used to create output tables in the schema  
+ - SQL DDL statements used to create output tables in the schema  
 resources.py  
-- contains helper functions and classes corresponding to each data-point type currently Encounter, Condition, MedicationOrder, an Patient fields from theEHR are supported. New classes should be added to this file.  
+ - contains helper functions and classes corresponding to each data-point type currently Encounter, Condition, MedicationOrder, an Patient fields from theEHR are supported. New classes should be added to this file.  
